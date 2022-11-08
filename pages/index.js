@@ -133,13 +133,25 @@ export default function Home() {
                 className='cursor-pointer'
                 onClick={() => goTo(datum)}
               >
-                <MxTableCell>{datum.name}</MxTableCell>
-                <MxTableCell>{datum.region}</MxTableCell>
-                <MxTableCell>{datum.coatOfArms}</MxTableCell>
+                <MxTableCell>
+                  <div>{datum.name}</div>
+                </MxTableCell>
+                <MxTableCell>
+                  <div>{datum.region}</div>
+                </MxTableCell>
+                <MxTableCell>
+                  <div>{datum.coatOfArms}</div>
+                </MxTableCell>
                 <MxTableRow>
-                  <MxTableCell>{index} index</MxTableCell>
-                  <MxTableCell>Nested</MxTableCell>
-                  <MxTableCell>Column</MxTableCell>
+                  <MxTableCell>
+                    <div>{index} index</div>
+                  </MxTableCell>
+                  <MxTableCell>
+                    <div>Nested</div>
+                  </MxTableCell>
+                  <MxTableCell>
+                    <div>Column</div>
+                  </MxTableCell>
                 </MxTableRow>
               </MxTableRow>
             ))}
