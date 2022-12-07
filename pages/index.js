@@ -1,163 +1,70 @@
-import { useState, useRef, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { useEffectOnce } from 'react-use';
-import {
-  MxTable,
-  MxTableRow,
-  MxTableCell,
-  MxDatePicker,
-} from '@moxiworks/mds/react';
-import debounce from 'lodash.debounce';
-
+import { useEffect, useState, useRef } from 'react';
+import { MxSearch, MxMenu, MxMenuItem } from '@moxiworks/mds/react';
 import '@moxiworks/mds/dist/styles/mds-core.css';
 
 export default function Home() {
-  // useRouter for programatic Route navigation.
-  const router = useRouter();
-
-  // Reference for the table. Important for the mxPageChange listener.
-  const tableRef = useRef(null);
-
-  // Setting to ensure rendering happens after mount.
-  // Solution found at https://www.joshwcomeau.com/react/the-perils-of-rehydration/
-  // via https://nextjs.org/docs/messages/react-hydration-error
+  const searchEl = useRef(null);
+  const menuEl = useRef(null);
   const [hasMounted, setHasMounted] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [term, setTerm] = useState(null);
+  const [suggestions] = useState([
+    'Apple',
+    'Banana',
+    'Cherry',
+    'Dragonfruit',
+    'Kiwi',
+    'Strawberry',
+    'Tomato',
+  ]);
 
-  // Using useState but this can clearly be useReducer or Redux or Zustand or whatever.
-  const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(5);
-  const [isLastPage, setIsLastPage] = useState(false);
-  const [totalPages, setTotalPages] = useState(0);
-  const [data, setData] = useState([]);
-
-  // Simple retrieve method to return data from API and setting state.
-  const getData = async (page, pageSize) => {
-    const initialData = await fetch(
-      `https://anapioficeandfire.com/api/houses?page=${page}&pageSize=${pageSize}`
-    );
-    const initialJson = await initialData.json();
-
-    // With this API we need to inspect the header to glean the total pages available in the API.
-    // Remember, this is specific to the API the example is working with.
-    const pages = initialData.headers.get('link').match(/page=[0-9]+/g);
-    const lastPage = +/[0-9]+/.exec(pages[pages.length - 1])[0];
-
-    // Set Data
-    setTotalPages(lastPage);
-    setIsLastPage(lastPage === page);
-    setData(initialJson);
-  };
-
-  // mxPageChange listener for pagination events.
-  // This returns a `detail` object on the event.
-  // That detail has the expected page number and rowsPerPage with it.
-  const setListners = () => {
-    if (tableRef && tableRef.current) {
-      tableRef.current.addEventListener('mxPageChange', (e) => {
-        const { detail } = e;
-        handlePagination(detail);
-      });
-    }
-  };
-
-  // Taking the data from the listener above, we get new data
-  // based on new pagination params passed from pagination event.
-  // I'm using debounce here to ensure I'm not making multiple calls.
-  const handlePagination = debounce(
-    ({ page, rowsPerPage }) => {
-      setPageSize(rowsPerPage);
-      setPage(page);
-      getData(page, rowsPerPage);
-    },
-    500,
-    {
-      leading: true,
-      trailing: false,
-    }
-  );
-
-  const goTo = ({ name }) => {
-    router.push(`/hooray?houseName=${name}`);
-  };
-
-  // useEffectOnce setting data and mounted flag.
-  useEffectOnce(() => {
-    getData(page, pageSize);
-    setHasMounted(true);
-  });
-
-  // useEffect to set the listeners once the hasMounted value updates.
   useEffect(() => {
-    setListners();
-  }, [hasMounted]);
+    setHasMounted(true);
+  }, []);
 
   if (!hasMounted) {
     return null;
   }
 
+  function handleOnInput() {
+    setTerm(searchEl.current.value);
+
+    // If the input has 3 or more characters, show the menu...
+    if (searchEl.current.value.length > 2) {
+      setMenuOpen(true);
+    } else {
+      setMenuOpen(false);
+    }
+  }
+
   return (
     <main className='mds'>
       <section className='w-2/3 my-56 mx-auto'>
-        <h2>Nested Table Cell Example</h2>
-        <MxTable
-          // Server side pagination
-          serverPaginate
-          // Table Reference
-          ref={tableRef}
-          // Current Page
-          page={page}
-          // Per Page Options Dropdown
-          rowsPerPageOptions={[5, 10, 20, 50]}
-          // Rows per page to show
-          rowsPerPage={pageSize}
-          // Disable next page if is last page.
-          disableNextPage={isLastPage}
-          // Properties are properties returned from the API. Headings are the label name for the column.
-          columns={[
-            { property: 'name', heading: 'Name', sortable: false },
-            { property: 'region', heading: 'Region', sortable: false },
-            {
-              property: 'coatOfArms',
-              heading: 'Coat of Arms',
-              sortable: false,
-            },
-          ]}
-          // Total Rows gives you the `n - n of n` text.
-          totalRows={totalPages}
-        >
-          {data &&
-            data.length > 0 &&
-            data.map((datum, index) => (
-              <MxTableRow
-                key={index}
-                className='cursor-pointer'
-                onClick={() => goTo(datum)}
-              >
-                <MxTableCell>
-                  <div>{datum.name}</div>
-                </MxTableCell>
-                <MxTableCell>
-                  <div>{datum.region}</div>
-                </MxTableCell>
-                <MxTableCell>
-                  <div>{datum.coatOfArms}</div>
-                </MxTableCell>
-                <MxTableRow>
-                  <MxTableCell>
-                    <div>{index} index</div>
-                  </MxTableCell>
-                  <MxTableCell>
-                    <div>Nested</div>
-                  </MxTableCell>
-                  <MxTableCell>
-                    <div>Column</div>
-                  </MxTableCell>
-                </MxTableRow>
-              </MxTableRow>
-            ))}
-        </MxTable>
-        <h2>Date Picker</h2>
-        <MxDatePicker label='Date' assistiveText='Please choose a date' />
+        <h2>Auto Complete</h2>
+        <p>
+          This is not a complete auto-complete example but rather a way of
+          showing how to open the menu after "n" amount of characters have been
+          typed into the input. In this case, we show the menu when 3 or more
+          characters are present.
+        </p>
+        <p>
+          There is no filtering of suggestions in this example. Simply
+          triggering the menu.
+        </p>
+        <div>
+          <MxSearch
+            ref={searchEl}
+            placeholder='Fruit'
+            value={term}
+            onInput={handleOnInput}
+          >
+            <MxMenu ref={menuEl} anchorEl={searchEl.current} isOpen={menuOpen}>
+              {suggestions.map((suggestion, i) => (
+                <MxMenuItem key={i}>{suggestion}</MxMenuItem>
+              ))}
+            </MxMenu>
+          </MxSearch>
+        </div>
       </section>
     </main>
   );
