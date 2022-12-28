@@ -1,8 +1,6 @@
 import { MxTabContent, MxTabs } from '@moxiworks/mds-alpha/react';
 import { useCallback, useEffect, useState } from 'react';
 
-import '@moxiworks/mds-alpha/dist/styles/mds-core.css';
-
 const CoversheetTabs = () => {
   const TAB_LIST = [
     { label: 'listing' },
@@ -35,41 +33,38 @@ const CoversheetTabs = () => {
   }
 
   return (
-    <div className='mds'>
-      <section className='w-2/3 my-56 mx-auto'>
-        <div className='py-16'>
-          <MxTabs
-            className='w-full'
-            fill
-            tabs={TAB_LIST}
-            value={activeTab}
-            onMxChange={toggleCoversheetTab}
-          />
-          {TAB_LIST.map((tab, i) => (
-            <MxTabContent key={i} index={i} value={activeTab}>
-              <p>{tab.label}</p>
-            </MxTabContent>
-          ))}
-        </div>
-      </section>
+    <>
+      <h2 className='my-24'>Tabs & Tab Content</h2>
+      <div className='py-16'>
+        <MxTabs
+          className='w-full'
+          fill
+          tabs={TAB_LIST}
+          value={activeTab}
+          onMxChange={toggleCoversheetTab}
+        />
+        {TAB_LIST.map((tab, i) => (
+          <MxTabContent key={i} index={i} value={activeTab}>
+            <p>{tab.label}</p>
+          </MxTabContent>
+        ))}
+      </div>
 
-      <section className='w-2/3 my-56 mx-auto'>
-        <div className='py-16'>
-          <MxTabs
-            className='w-full'
-            fill
-            tabs={TAB_LIST_TWO}
-            value={activeTabTwo}
-            onMxChange={toggleCoversheetTabTwo}
-          />
-          {TAB_LIST_TWO.map((tab, i) => (
-            <MxTabContent key={i} index={i} value={activeTabTwo}>
-              <p>{tab.label}</p>
-            </MxTabContent>
-          ))}
-        </div>
-      </section>
-    </div>
+      <div className='py-16'>
+        <MxTabs
+          className='w-full'
+          fill
+          tabs={TAB_LIST_TWO}
+          value={activeTabTwo}
+          onMxChange={toggleCoversheetTabTwo}
+        />
+        {TAB_LIST_TWO.map((tab, i) => (
+          <MxTabContent key={i} index={i} value={activeTabTwo}>
+            <p>{tab.label}</p>
+          </MxTabContent>
+        ))}
+      </div>
+    </>
   );
 };
 
