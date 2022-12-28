@@ -14,17 +14,16 @@
   resolved "https://registry.yarnpkg.com/@juggle/resize-observer/-/resize-observer-3.4.0.tgz#08d6c5e20cf7e4cc02fd181c4b0c225cd31dbb60"
   integrity sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==
 
-"@moxiworks/mds@^0.1.53":
-  version "0.1.53"
-  resolved "https://registry.yarnpkg.com/@moxiworks/mds/-/mds-0.1.53.tgz#5b3c99e10d3180e5794624dc14f8843fc9e176a3"
-  integrity sha512-0/S/jpJ1rKwnnPexF3DRnuOqXT6nsa9yOcyrEwolUtTiSFO6ron28uKgNN19FGq+8cKB/f3hGviHc8E4FKVwSQ==
+"@moxiworks/mds-alpha@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@moxiworks/mds-alpha/-/mds-alpha-0.0.1.tgz#2f7c407044af1f4653f35f42119fac27d7931341"
+  integrity sha512-lqlhdsuY2673b63Gr/IsiokxDL03zJ9brPT8C6uGnH7pAouqhsebgsOKImZVS/IWw2d6PrH7MxVy95D9loDXsg==
   dependencies:
     "@juggle/resize-observer" "^3.3.1"
     "@popperjs/core" "^2.9.2"
     "@stencil/core" "^2.0.1"
     chart.js "^3.6.2"
     js-datepicker "^5.18.0"
-    nanoid "^3.1.22"
     postcss-custom-properties "^11.0.0"
     postcss-import "^14.0.1"
     postcss-nested "^5.0.5"
@@ -290,7 +289,7 @@ nano-css@^5.3.1:
     stacktrace-js "^2.0.2"
     stylis "^4.0.6"
 
-nanoid@^3.1.22, nanoid@^3.3.4:
+nanoid@^3.3.4:
   version "3.3.4"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.4.tgz#730b67e3cd09e2deacf03c027c81c9d9dbc5e8ab"
   integrity sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==

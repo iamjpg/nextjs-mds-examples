@@ -6,10 +6,10 @@ import {
   MxTableRow,
   MxTableCell,
   MxDatePicker,
-} from '@moxiworks/mds/react';
+} from '@moxiworks/mds-alpha/react';
 import debounce from 'lodash.debounce';
 
-import '@moxiworks/mds/dist/styles/mds-core.css';
+import '@moxiworks/mds-alpha/dist/styles/mds-core.css';
 
 export default function NestedTable() {
   // useRouter for programatic Route navigation.
@@ -98,7 +98,7 @@ export default function NestedTable() {
   return (
     <main className='mds'>
       <section className='w-2/3 my-56 mx-auto'>
-        <h2>Nested Table Cell Example</h2>
+        <h2 className='my-24'>Nested Table Cell Example</h2>
         <MxTable
           // Server side pagination
           serverPaginate
@@ -156,7 +156,7 @@ export default function NestedTable() {
               </MxTableRow>
             ))}
         </MxTable>
-        <h2>Date Picker</h2>
+        <h2 className='my-24'>Date Picker</h2>
         <MxDatePicker label='Date' assistiveText='Please choose a date' />
       </section>
     </main>

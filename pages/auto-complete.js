@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
-import { MxSearch, MxMenu, MxMenuItem } from '@moxiworks/mds/react';
-import '@moxiworks/mds/dist/styles/mds-core.css';
+import { MxSearch, MxMenu, MxMenuItem } from '@moxiworks/mds-alpha/react';
+import '@moxiworks/mds-alpha/dist/styles/mds-core.css';
 
 export default function Home() {
   const searchEl = useRef(null);
@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <main className='mds'>
       <section className='w-320 my-56 mx-auto'>
-        <h2>Auto Complete</h2>
+        <h2 className='my-24'>Auto Complete</h2>
         <p>
           This is not a complete auto-complete example but rather a way of
           showing how to open the menu after "n" amount of characters have been

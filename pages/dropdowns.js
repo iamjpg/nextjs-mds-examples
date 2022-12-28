@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
-import { MxDropdownMenu, MxMenuItem, MxSelect } from '@moxiworks/mds/react';
+import {
+  MxDropdownMenu,
+  MxMenuItem,
+  MxSelect,
+} from '@moxiworks/mds-alpha/react';
 
-import '@moxiworks/mds/dist/styles/mds-core.css';
+import '@moxiworks/mds-alpha/dist/styles/mds-core.css';
 
 export default function Dropdown() {
   const [hasMounted, setHasMounted] = useState(false);
@@ -17,7 +21,7 @@ export default function Dropdown() {
   return (
     <main className='mds'>
       <section className='w-320 my-56 mx-auto'>
-        <h2>Dropdown</h2>
+        <h2 className='my-24'>Dropdown</h2>
 
         <MxDropdownMenu label='Favorite Animal' value=''>
           <MxMenuItem subtitle='Felis catus'>Cat</MxMenuItem>
@@ -25,7 +29,7 @@ export default function Dropdown() {
           <MxMenuItem subtitle='Odobenus rosmarus'>Walrus</MxMenuItem>
         </MxDropdownMenu>
 
-        <h2>Select</h2>
+        <h2 className='my-24'>Select</h2>
 
         <MxSelect label='Favorite Number' value=''>
           <option>One</option>
