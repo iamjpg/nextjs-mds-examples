@@ -94,67 +94,65 @@ export default function NestedTable() {
   }
 
   return (
-    <main className='mds'>
-      <section className='w-2/3 my-56 mx-auto'>
-        <h2 className='my-24'>Nested Table Cell Example</h2>
-        <MxTable
-          // Server side pagination
-          serverPaginate
-          // Table Reference
-          ref={tableRef}
-          // Current Page
-          page={page}
-          // Per Page Options Dropdown
-          rowsPerPageOptions={[5, 10, 20, 50]}
-          // Rows per page to show
-          rowsPerPage={pageSize}
-          // Disable next page if is last page.
-          disableNextPage={isLastPage}
-          // Properties are properties returned from the API. Headings are the label name for the column.
-          columns={[
-            { property: 'name', heading: 'Name', sortable: false },
-            { property: 'region', heading: 'Region', sortable: false },
-            {
-              property: 'coatOfArms',
-              heading: 'Coat of Arms',
-              sortable: false,
-            },
-          ]}
-          // Total Rows gives you the `n - n of n` text.
-          totalRows={totalPages}
-        >
-          {data &&
-            data.length > 0 &&
-            data.map((datum, index) => (
-              <MxTableRow
-                key={index}
-                className='cursor-pointer'
-                onClick={() => goTo(datum)}
-              >
+    <>
+      <h2 className='my-24'>Nested Table Cell Example</h2>
+      <MxTable
+        // Server side pagination
+        serverPaginate
+        // Table Reference
+        ref={tableRef}
+        // Current Page
+        page={page}
+        // Per Page Options Dropdown
+        rowsPerPageOptions={[5, 10, 20, 50]}
+        // Rows per page to show
+        rowsPerPage={pageSize}
+        // Disable next page if is last page.
+        disableNextPage={isLastPage}
+        // Properties are properties returned from the API. Headings are the label name for the column.
+        columns={[
+          { property: 'name', heading: 'Name', sortable: false },
+          { property: 'region', heading: 'Region', sortable: false },
+          {
+            property: 'coatOfArms',
+            heading: 'Coat of Arms',
+            sortable: false,
+          },
+        ]}
+        // Total Rows gives you the `n - n of n` text.
+        totalRows={totalPages}
+      >
+        {data &&
+          data.length > 0 &&
+          data.map((datum, index) => (
+            <MxTableRow
+              key={index}
+              className='cursor-pointer'
+              onClick={() => goTo(datum)}
+            >
+              <MxTableCell>
+                <div>{datum.name}</div>
+              </MxTableCell>
+              <MxTableCell>
+                <div>{datum.region}</div>
+              </MxTableCell>
+              <MxTableCell>
+                <div>{datum.coatOfArms}</div>
+              </MxTableCell>
+              <MxTableRow>
                 <MxTableCell>
-                  <div>{datum.name}</div>
+                  <div>{index} index</div>
                 </MxTableCell>
                 <MxTableCell>
-                  <div>{datum.region}</div>
+                  <div>Nested</div>
                 </MxTableCell>
                 <MxTableCell>
-                  <div>{datum.coatOfArms}</div>
+                  <div>Column</div>
                 </MxTableCell>
-                <MxTableRow>
-                  <MxTableCell>
-                    <div>{index} index</div>
-                  </MxTableCell>
-                  <MxTableCell>
-                    <div>Nested</div>
-                  </MxTableCell>
-                  <MxTableCell>
-                    <div>Column</div>
-                  </MxTableCell>
-                </MxTableRow>
               </MxTableRow>
-            ))}
-        </MxTable>
-      </section>
-    </main>
+            </MxTableRow>
+          ))}
+      </MxTable>
+    </>
   );
 }
