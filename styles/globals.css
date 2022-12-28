@@ -35,7 +35,7 @@ a {
   }
 
   .mx-tab button[role='tab']:hover {
-    color: #222;
+    background: #222;
   }
 
   .mx-tab button[aria-selected='true'] {
