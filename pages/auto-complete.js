@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
 import { MxSearch, MxMenu, MxMenuItem } from '@moxiworks/mds-alpha/react';
-import '@moxiworks/mds-alpha/dist/styles/mds-core.css';
 
 export default function Home() {
   const searchEl = useRef(null);

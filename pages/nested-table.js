@@ -9,8 +9,6 @@ import {
 } from '@moxiworks/mds-alpha/react';
 import debounce from 'lodash.debounce';
 
-import '@moxiworks/mds-alpha/dist/styles/mds-core.css';
-
 export default function NestedTable() {
   // useRouter for programatic Route navigation.
   const router = useRouter();
@@ -156,8 +154,6 @@ export default function NestedTable() {
               </MxTableRow>
             ))}
         </MxTable>
-        <h2 className='my-24'>Date Picker</h2>
-        <MxDatePicker label='Date' assistiveText='Please choose a date' />
       </section>
     </main>
   );

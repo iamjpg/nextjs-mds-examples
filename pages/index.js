@@ -1,7 +1,5 @@
 import Link from 'next/link';
 
-import '@moxiworks/mds-alpha/dist/styles/mds-core.css';
-
 export default function Home() {
   return (
     <div className='mds'>

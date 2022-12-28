@@ -1,8 +1,6 @@
 import { MxTabContent, MxTabs } from '@moxiworks/mds-alpha/react';
 import { useCallback, useEffect, useState } from 'react';
 
-import '@moxiworks/mds-alpha/dist/styles/mds-core.css';
-
 const CoversheetTabs = () => {
   const TAB_LIST = [
     { label: 'listing' },
