@@ -29,4 +29,19 @@ a {
     color: #f5f5f5 !important;
     text-decoration: underline !important;
   }
+
+  .mx-tab button[role='tab'] {
+    color: #f5f5f5;
+  }
+
+  .mx-tab button[role='tab']:hover {
+    color: #222;
+  }
+
+  .mx-tab button[aria-selected='true'] {
+    color: orange !important;
+  }
+  .mx-tab .active-tab-indicator {
+    background: orange;
+  }
 }
