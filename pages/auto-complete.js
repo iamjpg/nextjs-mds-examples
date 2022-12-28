@@ -37,39 +37,37 @@ export default function Home() {
   }
 
   return (
-    <main className='mds'>
-      <section className='w-320 my-56 mx-auto'>
-        <h2 className='my-24'>Auto Complete</h2>
-        <p>
-          This is not a complete auto-complete example but rather a way of
-          showing how to open the menu after "n" amount of characters have been
-          typed into the input. In this case, we show the menu when 3 or more
-          characters are present.
-        </p>
-        <p>
-          There is no filtering of suggestions in this example. Simply
-          triggering the menu.
-        </p>
-        <div>
-          <MxSearch
-            ref={searchEl}
-            placeholder='Fruit'
-            value={term}
-            onInput={handleOnInput}
+    <>
+      <h2 className='my-24'>Auto Complete</h2>
+      <p>
+        This is not a complete auto-complete example but rather a way of showing
+        how to open the menu after "n" amount of characters have been typed into
+        the input. In this case, we show the menu when 3 or more characters are
+        present.
+      </p>
+      <p>
+        There is no filtering of suggestions in this example. Simply triggering
+        the menu.
+      </p>
+      <div>
+        <MxSearch
+          ref={searchEl}
+          placeholder='Fruit'
+          value={term}
+          onInput={handleOnInput}
+        >
+          <MxMenu
+            ref={menuEl}
+            anchorEl={searchEl.current}
+            isOpen={menuOpen}
+            placement={'bottom-start'}
           >
-            <MxMenu
-              ref={menuEl}
-              anchorEl={searchEl.current}
-              isOpen={menuOpen}
-              placement={'bottom-start'}
-            >
-              {suggestions.map((suggestion, i) => (
-                <MxMenuItem key={i}>{suggestion}</MxMenuItem>
-              ))}
-            </MxMenu>
-          </MxSearch>
-        </div>
-      </section>
-    </main>
+            {suggestions.map((suggestion, i) => (
+              <MxMenuItem key={i}>{suggestion}</MxMenuItem>
+            ))}
+          </MxMenu>
+        </MxSearch>
+      </div>
+    </>
   );
 }
