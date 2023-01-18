@@ -16,6 +16,9 @@ export default function Home() {
         <li className='my-10'>
           <Link href='/tab-content'>Tab Content</Link>
         </li>
+        <li className='my-10'>
+          <Link href='/kendo-grid'>Kendo Table Grid</Link>
+        </li>
       </ul>
     </>
   );
