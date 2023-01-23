@@ -19,7 +19,7 @@ export const sampleProducts = [
   },
   {
     ProductID: 2,
-    ProductName: 'Chang',
+    ProductName: 'French Toast',
     SupplierID: 1,
     CategoryID: 1,
     QuantityPerUnit: '24 - 12 oz bottles',
