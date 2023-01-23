@@ -316,6 +316,11 @@
     "@progress/kendo-react-common" "5.9.0"
     prop-types "^15.6.0"
 
+"@progress/kendo-svg-icons@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-svg-icons/-/kendo-svg-icons-1.1.1.tgz#81435c139338a6745f30e894d757d06f0ffd5bf9"
+  integrity sha512-rqbMR8ADwfZnTGzqOmvtziEtluCIpij2vIYNqKWOAyR/AfdAmXQuu8ez78LiHMKgCwiD2iJevjN2mQMgzxXcLg==
+
 "@progress/kendo-theme-bootstrap@^6.0.3":
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/@progress/kendo-theme-bootstrap/-/kendo-theme-bootstrap-6.0.3.tgz#59f5f9b5c591fd6ae8407f424f94f26799e5f2b7"
