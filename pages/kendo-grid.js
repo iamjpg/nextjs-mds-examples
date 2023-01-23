@@ -1,8 +1,7 @@
 import { useRef, useState } from 'react';
-import { Grid, GridColumn, GridToolbar } from '@progress/kendo-react-grid';
+import { Grid, GridColumn } from '@progress/kendo-react-grid';
 import { ExcelExport } from '@progress/kendo-react-excel-export';
 import { filterBy } from '@progress/kendo-data-query';
-import { McButton } from '@moxiworks/mds-alpha/react';
 import { sampleProducts } from '../helpers/kendoProducts';
 
 const initialFilter = {
@@ -11,7 +10,7 @@ const initialFilter = {
     {
       field: 'ProductName',
       operator: 'contains',
-      value: 'Chef',
+      value: '',
     },
   ],
 };
@@ -34,11 +33,6 @@ export default function KendoGrid() {
           filter={filter}
           onFilterChange={(e) => setFilter(e.filter)}
         >
-          <GridToolbar>
-            <McButton title='Export Excel' onClick={excelExport}>
-              Export to Excel
-            </McButton>
-          </GridToolbar>
           <GridColumn
             field='ProductID'
             title='ID'

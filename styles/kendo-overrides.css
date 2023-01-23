@@ -2,3 +2,7 @@ td,
 .k-column-title {
   font-size: 20px;
 }
+
+.k-icon {
+  font-family: 'WebComponentsIcons' !important;
+}
