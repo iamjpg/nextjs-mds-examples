@@ -13,13 +13,6 @@ const MdsModalPage = () => {
   // Toggle modal open/close.
   const showModalHandler = () => setIsOpenModal(!isOpenModal);
 
-  // Add event listener to modal body button.
-  const setModalListeners = () => {
-    btnRef.current?.addEventListener('click', () => {
-      showModalHandler();
-    });
-  };
-
   // Modal footer buttons.
   const btnActions = [
     { label: 'Primary', onClick: () => showModalHandler() },
@@ -37,13 +30,8 @@ const MdsModalPage = () => {
     return null;
   }
 
-  // Add event listener to modal body button.
-  setModalListeners();
-
-  // You won't be able to return a react fragment here because the modal is a portal outside of the React tree.
-  // Be sure to use a div wrapper.
   return (
-    <div>
+    <>
       <MxButton
         className='my-10'
         type='button'
@@ -60,18 +48,24 @@ const MdsModalPage = () => {
         large
         onMxClose={showModalHandler}
         buttons={btnActions}
+        appendToSelector='#__next'
       >
         <div slot='header-left'>Modal</div>
         <div className='modal-content'>
           CONTENT
           <div className='mt-2 flex w-full flex-wrap gap-8 rounded-lg border bg-slate-100 p-10'>
-            <MxButton ref={btnRef} type='button' btnType='outlined'>
+            <MxButton
+              ref={btnRef}
+              type='button'
+              btnType='outlined'
+              onClick={showModalHandler}
+            >
               Cancel
             </MxButton>
           </div>
         </div>
       </MxModal>
-    </div>
+    </>
   );
 };
 

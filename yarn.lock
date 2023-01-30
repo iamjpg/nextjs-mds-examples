@@ -14,10 +14,10 @@
   resolved "https://registry.yarnpkg.com/@juggle/resize-observer/-/resize-observer-3.4.0.tgz#08d6c5e20cf7e4cc02fd181c4b0c225cd31dbb60"
   integrity sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==
 
-"@moxiworks/mds-alpha@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@moxiworks/mds-alpha/-/mds-alpha-0.0.1.tgz#2f7c407044af1f4653f35f42119fac27d7931341"
-  integrity sha512-lqlhdsuY2673b63Gr/IsiokxDL03zJ9brPT8C6uGnH7pAouqhsebgsOKImZVS/IWw2d6PrH7MxVy95D9loDXsg==
+"@moxiworks/mds-alpha@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@moxiworks/mds-alpha/-/mds-alpha-0.0.3.tgz#f7d8c8b20f1ae6dac0052331d491cf2846a5ce30"
+  integrity sha512-dLnsfEW8JesXy8Vpp8WyzuQUMAbVTylBXhYgT0jvi7vvEynA8HLKW+75o98CggDlREM/Hqx7Z+pVZXVpQuAIcA==
   dependencies:
     "@juggle/resize-observer" "^3.3.1"
     "@popperjs/core" "^2.9.2"

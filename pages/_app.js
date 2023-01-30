@@ -1,10 +1,10 @@
-import Layout from "../components/layout";
-import { useState, useEffect } from "react";
+import Layout from '../components/layout';
+import { useState, useEffect } from 'react';
 
-import "@moxiworks/mds-alpha/dist/styles/mds-core.css";
-import "../styles/globals.css";
-import "../styles/kendo-ui.css";
-import "../styles/kendo-overrides.css";
+import '@moxiworks/mds-alpha/dist/styles/mds-core.css';
+import '../styles/globals.css';
+import '../styles/kendo-ui.css';
+import '../styles/kendo-overrides.css';
 
 export default function MyApp({ Component, pageProps }) {
   const [showChild, setShowChild] = useState(false);
@@ -17,7 +17,7 @@ export default function MyApp({ Component, pageProps }) {
     return null;
   }
 
-  if (typeof window === "undefined") {
+  if (typeof window === 'undefined') {
     return <></>;
   }
 
